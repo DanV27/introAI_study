@@ -4,15 +4,30 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Quiz — Intro to AI Study</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
+<script src="js/theme.js"></script>
 </head>
 <body>
+<button class="theme-toggle" id="theme-toggle" type="button"></button>
 <div class="container">
   <div class="quiz-header">
-    <button class="exit-btn" id="exit-btn" type="button">Exit Quiz</button>
+    <button class="exit-btn" id="exit-btn" type="button">&lt; exit quiz</button>
     <div class="progress" id="progress"></div>
   </div>
   <div id="quiz-area"></div>
+</div>
+
+<div class="modal-overlay" id="exit-modal" hidden>
+  <div class="modal">
+    <p>Exit this quiz? Your progress will <strong>NOT</strong> be saved and this attempt will not appear in your score history.</p>
+    <div class="modal-actions">
+      <button class="btn secondary" id="exit-cancel" type="button">Cancel</button>
+      <button class="btn danger" id="exit-confirm" type="button">Exit Quiz</button>
+    </div>
+  </div>
 </div>
 
 <script src="js/storage.js"></script>
@@ -31,20 +46,34 @@
   let awaitingNext = false;
 
   const isFullTest = topic === 'full';
+  const LETTERS = ['A', 'B', 'C', 'D', 'E', 'F'];
 
   const TOPIC_LABELS = {
-    'data-sources': 'Data Sources & Quality',
-    'reasoning-knowledge': 'Reasoning & Knowledge',
-    'types-of-ai': 'Types of AI / Agents',
-    'full': 'Full Practice Test',
+    'data-sources': 'data-sources',
+    'reasoning-knowledge': 'reasoning-knowledge',
+    'types-of-ai': 'types-of-ai',
+    'full': 'full-practice-test',
   };
 
+  const exitModal = document.getElementById('exit-modal');
+
   document.getElementById('exit-btn').addEventListener('click', () => {
-    const confirmed = confirm('Exit this quiz? Your progress will NOT be saved and this attempt will not appear in your score history.');
-    if (confirmed) {
-      window.location.href = 'index.html';
-    }
+    exitModal.hidden = false;
   });
+
+  document.getElementById('exit-cancel').addEventListener('click', () => {
+    exitModal.hidden = true;
+  });
+
+  document.getElementById('exit-confirm').addEventListener('click', () => {
+    window.location.href = 'index.html';
+  });
+
+  function progressBarText(current, total, width = 10) {
+    const filled = Math.max(0, Math.min(width, Math.round((current / total) * width)));
+    return '[<span class="bar-filled">' + '■'.repeat(filled) + '</span>' +
+      '<span class="bar-empty">' + '□'.repeat(width - filled) + '</span>] ' + current + '/' + total;
+  }
 
   async function init() {
     if (!topic) {
@@ -79,11 +108,11 @@
 
   function renderQuestion() {
     const q = questions[currentIndex];
-    progressEl.textContent = `Question ${currentIndex + 1} of ${questions.length} — ${TOPIC_LABELS[topic] || topic}`;
+    progressEl.innerHTML = `${TOPIC_LABELS[topic] || topic} ${progressBarText(currentIndex + 1, questions.length)}`;
     awaitingNext = false;
 
     const choicesHtml = q.choices.map((choice, i) =>
-      `<button class="choice-btn" data-index="${i}">${choice}</button>`
+      `<button class="choice-btn" data-index="${i}"><span class="choice-letter">${LETTERS[i]}</span><span>${choice}</span></button>`
     ).join('');
 
     quizArea.innerHTML = `
@@ -131,10 +160,13 @@
 
     if (!isFullTest) {
       const feedback = document.getElementById('feedback');
+      const statusLine = isCorrect
+        ? `<div class="test-line pass">&#10003; PASS</div>`
+        : `<div class="test-line fail">&#10007; FAIL — correct answer: ${LETTERS[q.correctIndex]}</div>`;
       feedback.innerHTML = `
-        <div class="feedback ${isCorrect ? 'correct' : 'incorrect'}">
-          <div class="feedback-label ${isCorrect ? 'correct' : 'incorrect'}">${isCorrect ? 'Correct!' : 'Incorrect'}</div>
-          <div>${q.explanation}</div>
+        <div class="test-output">
+          ${statusLine}
+          <div class="test-comment"># ${q.explanation}</div>
         </div>
       `;
     }

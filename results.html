@@ -4,14 +4,20 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Results — Intro to AI Study</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
+<script src="js/theme.js"></script>
 </head>
 <body>
+<button class="theme-toggle" id="theme-toggle" type="button"></button>
 <div class="container">
   <div id="results-area"></div>
 </div>
 
 <script>
+  const LETTERS = ['A', 'B', 'C', 'D', 'E', 'F'];
   const attempt = JSON.parse(sessionStorage.getItem('lastAttempt') || 'null');
   const area = document.getElementById('results-area');
 
@@ -27,10 +33,10 @@
         <div class="missed-question">
           <p class="question-text">${m.question}</p>
           <div class="label your-answer">Your answer</div>
-          <div class="your-answer">${m.choices[m.chosenIndex]}</div>
+          <div class="your-answer">${LETTERS[m.chosenIndex]}. ${m.choices[m.chosenIndex]}</div>
           <div class="label correct-answer">Correct answer</div>
-          <div class="correct-answer">${m.choices[m.correctIndex]}</div>
-          <div class="label">Explanation</div>
+          <div class="correct-answer">${LETTERS[m.correctIndex]}. ${m.choices[m.correctIndex]}</div>
+          <div class="label"># explanation</div>
           <div>${m.explanation}</div>
         </div>
       `).join('');

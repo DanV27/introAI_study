@@ -4,18 +4,24 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Intro to AI — Exam Study Quiz</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
+<script src="js/theme.js"></script>
 </head>
 <body>
+<button class="theme-toggle" id="theme-toggle" type="button"></button>
 <div class="container">
-  <h1>Intro to AI — Exam Study Quiz</h1>
+  <p class="prompt-line">intro-to-ai/</p>
+  <h1>Exam Study Quiz</h1>
   <p class="subtitle">Practice questions across data sources, reasoning &amp; knowledge, and types of AI. Pick a topic below or take the full weighted practice test.</p>
 
   <div class="topic-list">
-    <a class="btn" href="quiz.html?topic=data-sources">Data Sources &amp; Quality</a>
-    <a class="btn" href="quiz.html?topic=reasoning-knowledge">Reasoning &amp; Knowledge</a>
-    <a class="btn" href="quiz.html?topic=types-of-ai">Types of AI / Agents</a>
-    <a class="btn" href="quiz.html?topic=full">Full Practice Test (weighted)</a>
+    <a class="dir-row" href="quiz.html?topic=data-sources"><span class="dir-prefix">&gt;</span> data-sources/</a>
+    <a class="dir-row" href="quiz.html?topic=reasoning-knowledge"><span class="dir-prefix">&gt;</span> reasoning-knowledge/</a>
+    <a class="dir-row" href="quiz.html?topic=types-of-ai"><span class="dir-prefix">&gt;</span> types-of-ai/</a>
+    <a class="dir-row" href="quiz.html?topic=full"><span class="dir-prefix">&gt;</span> full-practice-test/</a>
   </div>
 
   <h2>Recent Scores</h2>
@@ -25,10 +31,10 @@
 <script src="js/storage.js"></script>
 <script>
   const TOPIC_LABELS = {
-    'data-sources': 'Data Sources & Quality',
-    'reasoning-knowledge': 'Reasoning & Knowledge',
-    'types-of-ai': 'Types of AI / Agents',
-    'full': 'Full Practice Test',
+    'data-sources': 'data-sources',
+    'reasoning-knowledge': 'reasoning-knowledge',
+    'types-of-ai': 'types-of-ai',
+    'full': 'full-practice-test',
   };
 
   function renderAttempts() {
@@ -45,7 +51,7 @@
       const pct = a.total > 0 ? Math.round((a.score / a.total) * 100) : 0;
       const topicLabel = TOPIC_LABELS[a.topic] || a.topic;
       return `<li class="attempt-item">
-        <span>${date} — <span class="topic">${topicLabel}</span></span>
+        <span class="topic">${date} — ${topicLabel}</span>
         <span class="score">${a.score}/${a.total} (${pct}%)</span>
       </li>`;
     }).join('');
