@@ -1,5 +1,7 @@
 # Intro to AI — Exam Study Quiz
 
+![Screenshot of the quiz app home screen in dark mode](docs/screenshot.png)
+
 A static, framework-free web app for practicing "Intro to AI" exam questions across three topics (Data Sources & Quality, Reasoning & Knowledge, Types of AI / Agents), plus a weighted full practice test mode. Styled as a terminal/code-editor UI with light and dark themes, instant pass/fail feedback for single-topic quizzes, deferred (exam-style) feedback for the full practice test, and score history stored locally in your browser.
 
 ## Features
