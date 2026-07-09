@@ -68,7 +68,7 @@ introAI_Study/
 
 ## Deployment
 
-Deployed via GitHub Pages: _(add live link here once published)_
+Deployed via GitHub Pages: **https://danv27.github.io/introAI_study/**
 
 ## License
 
