@@ -1,0 +1,264 @@
+:root {
+  --accent: #6e00c1;
+  --accent-dark: #52008f;
+  --bg: #f8f9fa;
+  --surface: #ffffff;
+  --text: #191c1d;
+  --text-muted: #5c6166;
+  --border: #e1e3e4;
+  --correct: #1a7f37;
+  --incorrect: #ba1a1a;
+  --radius: 0.5rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 24px 20px 64px;
+}
+
+h1 {
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+
+h2 {
+  font-size: 20px;
+  margin-top: 32px;
+}
+
+p.subtitle {
+  color: var(--text-muted);
+  margin-top: 0;
+  margin-bottom: 32px;
+}
+
+.topic-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.btn {
+  display: block;
+  width: 100%;
+  padding: 16px 20px;
+  border: none;
+  border-radius: var(--radius);
+  background: var(--accent);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.btn:hover {
+  background: var(--accent-dark);
+}
+
+.btn.secondary {
+  background: var(--surface);
+  color: var(--accent);
+  border: 1px solid var(--accent);
+}
+
+.btn.secondary:hover {
+  background: #f3ebfb;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.attempt-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.attempt-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 12px 16px;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 14px;
+}
+
+.attempt-item .topic {
+  font-weight: 600;
+}
+
+.attempt-item .score {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.empty-state {
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.progress {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+.question-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  margin-bottom: 16px;
+}
+
+.question-text {
+  font-size: 18px;
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.choices {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.choice-btn {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  font-size: 15px;
+  cursor: pointer;
+  color: var(--text);
+}
+
+.choice-btn:hover:not(:disabled) {
+  border-color: var(--accent);
+}
+
+.choice-btn:disabled {
+  cursor: default;
+}
+
+.choice-btn.correct {
+  border-color: var(--correct);
+  background: #e9f7ee;
+  color: var(--correct);
+  font-weight: 600;
+}
+
+.choice-btn.incorrect {
+  border-color: var(--incorrect);
+  background: #fdecec;
+  color: var(--incorrect);
+  font-weight: 600;
+}
+
+.feedback {
+  margin-top: 16px;
+  padding: 16px;
+  border-radius: var(--radius);
+  background: #f3f4f5;
+}
+
+.feedback.correct {
+  background: #e9f7ee;
+}
+
+.feedback.incorrect {
+  background: #fdecec;
+}
+
+.feedback-label {
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.feedback-label.correct {
+  color: var(--correct);
+}
+
+.feedback-label.incorrect {
+  color: var(--incorrect);
+}
+
+.score-summary {
+  text-align: center;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 32px 20px;
+  margin-bottom: 24px;
+}
+
+.score-summary .score-big {
+  font-size: 40px;
+  font-weight: 800;
+  color: var(--accent);
+}
+
+.missed-question {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  margin-bottom: 16px;
+}
+
+.missed-question .label {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-top: 12px;
+}
+
+.missed-question .your-answer {
+  color: var(--incorrect);
+}
+
+.missed-question .correct-answer {
+  color: var(--correct);
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+@media (min-width: 480px) {
+  .actions {
+    flex-direction: row;
+  }
+}

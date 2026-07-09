@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz — Intro to AI Study</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="container">
+  <div class="progress" id="progress"></div>
+  <div id="quiz-area"></div>
+</div>
+
+<script src="js/storage.js"></script>
+<script src="js/quiz-engine.js"></script>
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const topic = params.get('topic');
+  const retryIdsParam = params.get('ids');
+
+  const quizArea = document.getElementById('quiz-area');
+  const progressEl = document.getElementById('progress');
+
+  let questions = [];
+  let currentIndex = 0;
+  let answered = [];
+  let awaitingNext = false;
+
+  const TOPIC_LABELS = {
+    'data-sources': 'Data Sources & Quality',
+    'reasoning-knowledge': 'Reasoning & Knowledge',
+    'types-of-ai': 'Types of AI / Agents',
+    'full': 'Full Practice Test',
+  };
+
+  async function init() {
+    if (!topic) {
+      quizArea.innerHTML = '<p>No topic specified. <a href="index.html">Back to home</a></p>';
+      return;
+    }
+
+    let allQuestions;
+    try {
+      allQuestions = await fetchQuestions();
+    } catch (e) {
+      quizArea.innerHTML = '<p>Could not load questions. Make sure you are running this via a local server, not opening the file directly.</p>';
+      return;
+    }
+
+    if (retryIdsParam) {
+      const ids = retryIdsParam.split(',');
+      const byId = new Map(allQuestions.map((q) => [q.id, q]));
+      const selected = ids.map((id) => byId.get(id)).filter(Boolean);
+      questions = shuffle(selected).map(shuffleChoices);
+    } else {
+      questions = buildQuizQuestions(allQuestions, topic);
+    }
+
+    if (questions.length === 0) {
+      quizArea.innerHTML = '<p>No questions found for this selection. <a href="index.html">Back to home</a></p>';
+      return;
+    }
+
+    renderQuestion();
+  }
+
+  function renderQuestion() {
+    const q = questions[currentIndex];
+    progressEl.textContent = `Question ${currentIndex + 1} of ${questions.length} — ${TOPIC_LABELS[topic] || topic}`;
+    awaitingNext = false;
+
+    const choicesHtml = q.choices.map((choice, i) =>
+      `<button class="choice-btn" data-index="${i}">${choice}</button>`
+    ).join('');
+
+    quizArea.innerHTML = `
+      <div class="question-card">
+        <p class="question-text">${q.question}</p>
+        <div class="choices" id="choices">${choicesHtml}</div>
+        <div id="feedback"></div>
+      </div>
+      <button class="btn" id="next-btn" style="display:none;">Next</button>
+    `;
+
+    document.querySelectorAll('.choice-btn').forEach((btn) => {
+      btn.addEventListener('click', () => handleAnswer(parseInt(btn.dataset.index, 10)));
+    });
+
+    document.getElementById('next-btn').addEventListener('click', goNext);
+  }
+
+  function handleAnswer(chosenIndex) {
+    if (awaitingNext) return;
+    awaitingNext = true;
+
+    const q = questions[currentIndex];
+    const isCorrect = chosenIndex === q.correctIndex;
+
+    answered.push({
+      id: q.id,
+      chosenIndex,
+      correctIndex: q.correctIndex,
+      question: q.question,
+      choices: q.choices,
+      explanation: q.explanation,
+    });
+
+    document.querySelectorAll('.choice-btn').forEach((btn) => {
+      const i = parseInt(btn.dataset.index, 10);
+      btn.disabled = true;
+      if (i === q.correctIndex) btn.classList.add('correct');
+      else if (i === chosenIndex) btn.classList.add('incorrect');
+    });
+
+    const feedback = document.getElementById('feedback');
+    feedback.innerHTML = `
+      <div class="feedback ${isCorrect ? 'correct' : 'incorrect'}">
+        <div class="feedback-label ${isCorrect ? 'correct' : 'incorrect'}">${isCorrect ? 'Correct!' : 'Incorrect'}</div>
+        <div>${q.explanation}</div>
+      </div>
+    `;
+
+    const nextBtn = document.getElementById('next-btn');
+    nextBtn.style.display = 'block';
+    nextBtn.textContent = currentIndex === questions.length - 1 ? 'See Results' : 'Next';
+  }
+
+  function goNext() {
+    if (currentIndex === questions.length - 1) {
+      finishQuiz();
+    } else {
+      currentIndex++;
+      renderQuestion();
+    }
+  }
+
+  function finishQuiz() {
+    const { correct, total } = calculateScore(answered);
+    const missed = answered.filter((a) => a.chosenIndex !== a.correctIndex);
+
+    const attempt = {
+      id: `attempt-${Date.now()}`,
+      date: new Date().toISOString(),
+      topic,
+      score: correct,
+      total,
+      missed,
+    };
+
+    saveAttempt(attempt);
+    sessionStorage.setItem('lastAttempt', JSON.stringify(attempt));
+    window.location.href = 'results.html';
+  }
+
+  init();
+</script>
+</body>
+</html>

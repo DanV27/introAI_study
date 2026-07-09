@@ -1,0 +1,1542 @@
+[
+  {
+    "id": "ds-001",
+    "topic": "data-sources",
+    "difficulty": "medium",
+    "question": "A team is building a fraud-detection model using bank transaction records with defined fields like amount, date, and account number. What data type and tool combo fits best?",
+    "choices": [
+      "Unstructured data; PyTorch",
+      "Structured data; SQL",
+      "Synthetic data; scikit-learn",
+      "Semi-structured data; Pandas"
+    ],
+    "correctIndex": 1,
+    "explanation": "Bank transaction records with well-defined fields are structured data, and SQL is the standard tool for querying relational, structured data."
+  },
+  {
+    "id": "ds-002",
+    "topic": "data-sources",
+    "difficulty": "medium",
+    "question": "A dataset shows a customer's age as \"34\" in one system and \"43\" in another for the same person. Which data quality dimension is being violated?",
+    "choices": [
+      "Completeness",
+      "Validity",
+      "Consistency",
+      "Accuracy"
+    ],
+    "correctIndex": 2,
+    "explanation": "Consistency means the same fact should match across systems; conflicting values for the same person violate consistency."
+  },
+  {
+    "id": "ds-003",
+    "topic": "data-sources",
+    "difficulty": "medium",
+    "question": "A survey dataset has 500 responses, but 80 of them are missing the \"income\" field entirely. This is a problem of:",
+    "choices": [
+      "Inaccuracy",
+      "Incompleteness",
+      "Inconsistency",
+      "Invalidity"
+    ],
+    "correctIndex": 1,
+    "explanation": "Missing values for a field are a completeness problem \u2014 the data that should be there simply isn't."
+  },
+  {
+    "id": "ds-004",
+    "topic": "data-sources",
+    "difficulty": "medium",
+    "question": "In big data terminology, which \"V\" refers to the trustworthiness and quality of the data itself?",
+    "choices": [
+      "Volume",
+      "Velocity",
+      "Variety",
+      "Veracity"
+    ],
+    "correctIndex": 3,
+    "explanation": "Veracity refers to the trustworthiness, accuracy, and quality of the data."
+  },
+  {
+    "id": "ds-005",
+    "topic": "data-sources",
+    "difficulty": "medium",
+    "question": "An analyst finds a handful of clearly wrong values (e.g., a person's age listed as 400) in a small, high-stakes financial dataset. What's the best approach?",
+    "choices": [
+      "Delete the entire dataset and start over",
+      "Let an automated script silently overwrite all outlier values",
+      "Manually review and correct the erroneous entries",
+      "Ignore them since they're a small percentage of the data"
+    ],
+    "correctIndex": 2,
+    "explanation": "For small, high-stakes datasets, manual review ensures errors are corrected accurately rather than risking automated over-correction or ignoring bad data."
+  },
+  {
+    "id": "ds-006",
+    "topic": "data-sources",
+    "difficulty": "medium",
+    "question": "Which preprocessing technique rescales features so that the mean is 0 and the standard deviation is 1?",
+    "choices": [
+      "Min-max scaling",
+      "Standardization (Z-score)",
+      "Binning",
+      "One-hot encoding"
+    ],
+    "correctIndex": 1,
+    "explanation": "Standardization (Z-score scaling) transforms features to have a mean of 0 and standard deviation of 1."
+  },
+  {
+    "id": "ds-007",
+    "topic": "data-sources",
+    "difficulty": "medium",
+    "question": "A dataset has \"income\" ranging from $20,000\u2013$500,000 and \"years of experience\" ranging from 0\u201340. Without adjustment, income will dominate a distance-based model. What should be done?",
+    "choices": [
+      "Feature engineering",
+      "Data normalization",
+      "Flattening",
+      "Append"
+    ],
+    "correctIndex": 1,
+    "explanation": "Normalization rescales features to comparable ranges so no single feature dominates distance-based calculations purely due to scale."
+  },
+  {
+    "id": "ds-008",
+    "topic": "data-sources",
+    "difficulty": "medium",
+    "question": "A real estate feature lists \"bedrooms\" as 1, 2, 3, 4, 5+ and the analyst wants to group house sizes into \"small,\" \"medium,\" \"large\" categories instead of raw square footage. This is an example of:",
+    "choices": [
+      "Standardization",
+      "Binning",
+      "Flattening",
+      "Append"
+    ],
+    "correctIndex": 1,
+    "explanation": "Binning groups continuous or numeric values into discrete categories or ranges."
+  },
+  {
+    "id": "ds-009",
+    "topic": "data-sources",
+    "difficulty": "medium",
+    "question": "Why is it important to keep a test set completely separate from training data?",
+    "choices": [
+      "It reduces the total amount of data storage needed",
+      "It prevents the model from being evaluated on data it already learned from",
+      "It converts categorical data into numeric form",
+      "It removes the need for data cleaning"
+    ],
+    "correctIndex": 1,
+    "explanation": "A separate test set ensures the model is evaluated on unseen data, giving an honest measure of generalization performance."
+  },
+  {
+    "id": "ds-010",
+    "topic": "data-sources",
+    "difficulty": "medium",
+    "question": "An analyst combines three separate regional sales spreadsheets (same columns) into one unified dataset. Which transformation technique is this?",
+    "choices": [
+      "Flatten",
+      "Append",
+      "Binning",
+      "Digest"
+    ],
+    "correctIndex": 1,
+    "explanation": "Appending stacks rows from datasets with matching columns into a single unified dataset."
+  },
+  {
+    "id": "ds-011",
+    "topic": "data-sources",
+    "difficulty": "medium",
+    "question": "A JSON dataset contains deeply nested customer order objects with sub-arrays for items and shipping details. To make this easier to analyze in a table, the analyst should:",
+    "choices": [
+      "Append the data",
+      "Flatten the data",
+      "Normalize the data",
+      "Standardize the data"
+    ],
+    "correctIndex": 1,
+    "explanation": "Flattening converts nested structures like JSON into a simple tabular row/column format."
+  },
+  {
+    "id": "ds-012",
+    "topic": "data-sources",
+    "difficulty": "medium",
+    "question": "A feature has a long right tail with several extreme outliers (e.g., income data). Applying a Box-Cox transformation with an exponent of 0 corresponds to which operation?",
+    "choices": [
+      "Square root",
+      "Logarithm",
+      "Reciprocal",
+      "Doubling"
+    ],
+    "correctIndex": 1,
+    "explanation": "A Box-Cox transformation with an exponent (lambda) of 0 is defined as the natural logarithm transform."
+  },
+  {
+    "id": "ds-013",
+    "topic": "data-sources",
+    "difficulty": "medium",
+    "question": "An analyst wants a single number that describes the \"typical\" purchase amount in a large dataset of transactions. Which statistic is most appropriate?",
+    "choices": [
+      "Standard deviation",
+      "Variance",
+      "Mean",
+      "Range"
+    ],
+    "correctIndex": 2,
+    "explanation": "The mean provides a single representative value describing the typical/central value of a dataset."
+  },
+  {
+    "id": "ds-014",
+    "topic": "data-sources",
+    "difficulty": "medium",
+    "question": "An analyst wants to understand how spread out home prices are around the average in a neighborhood. Which statistic should they compute?",
+    "choices": [
+      "Mode",
+      "Median",
+      "Mean",
+      "Standard deviation"
+    ],
+    "correctIndex": 3,
+    "explanation": "Standard deviation measures how much values deviate from the mean, i.e., how spread out the data is."
+  },
+  {
+    "id": "ds-015",
+    "topic": "data-sources",
+    "difficulty": "medium",
+    "question": "A startup wants full control over data compliance and is willing to pay higher upfront costs for dedicated hardware rather than using a cloud provider. This describes:",
+    "choices": [
+      "A hybrid solution",
+      "An on-premise solution",
+      "A cloud-native solution",
+      "A federated solution"
+    ],
+    "correctIndex": 1,
+    "explanation": "On-premise solutions give organizations full control over their hardware and compliance at higher upfront cost."
+  },
+  {
+    "id": "ds-016",
+    "topic": "data-sources",
+    "difficulty": "medium",
+    "question": "Which Kaggle feature would be most useful for a student who wants to learn brand-new techniques and tools they haven't used before?",
+    "choices": [
+      "Discussion forums",
+      "Competitions",
+      "Learning resources",
+      "Datasets sharing"
+    ],
+    "correctIndex": 2,
+    "explanation": "Kaggle's learning resources (courses/tutorials) are specifically designed to teach new techniques and tools."
+  },
+  {
+    "id": "ds-017",
+    "topic": "data-sources",
+    "difficulty": "medium",
+    "question": "A company wants to build a computer vision model to detect defective parts on an assembly line using photos. What data type and tool pairing is most appropriate?",
+    "choices": [
+      "Structured data; SQL",
+      "Unstructured data; PyTorch",
+      "Synthetic data; scikit-learn",
+      "Public datasets; Pandas"
+    ],
+    "correctIndex": 1,
+    "explanation": "Images are unstructured data, and PyTorch is a common deep learning framework used for computer vision tasks."
+  },
+  {
+    "id": "ds-018",
+    "topic": "data-sources",
+    "difficulty": "medium",
+    "question": "A dataset entry lists a customer's purchase date as \"02/13/2026\" in one field and \"13/02/2026\" in another, both meant to represent the same date but in different formats. This is primarily an issue of:",
+    "choices": [
+      "Accuracy",
+      "Completeness",
+      "Validity",
+      "Veracity"
+    ],
+    "correctIndex": 2,
+    "explanation": "Differing date formats for the same underlying date represent a format/consistency mismatch, most closely tied to validity of the recorded format."
+  },
+  {
+    "id": "ds-019",
+    "topic": "data-sources",
+    "difficulty": "medium",
+    "question": "During an iterative machine learning project, why might an analyst deliberately train on a small subset of the full dataset in the early stages?",
+    "choices": [
+      "To permanently reduce the dataset size",
+      "To speed up iteration and get faster feedback while refining the approach",
+      "To avoid needing to clean the data",
+      "To eliminate the need for a test set"
+    ],
+    "correctIndex": 1,
+    "explanation": "Training on a smaller subset early on speeds up iteration cycles, allowing analysts to refine their approach faster before scaling up."
+  },
+  {
+    "id": "ds-020",
+    "topic": "data-sources",
+    "difficulty": "medium",
+    "question": "A hybrid infrastructure approach in a machine learning project typically means:",
+    "choices": [
+      "All data and models stay strictly on-premise",
+      "All data and models are pushed entirely to the cloud with no local components",
+      "Production models are often deployed in the cloud while some components remain on-premise",
+      "Data is duplicated across every available cloud provider"
+    ],
+    "correctIndex": 2,
+    "explanation": "A hybrid approach combines cloud deployment (e.g., for scalability) with certain components kept on-premise (e.g., for compliance or control)."
+  },
+  {
+    "id": "ds-021",
+    "topic": "data-sources",
+    "difficulty": "hard",
+    "question": "A logistics company predicts delivery delays using GPS coordinates, timestamps, and package weight, all stored in well-defined database columns. Which data type/tool pairing fits best?",
+    "choices": [
+      "Unstructured data; PyTorch",
+      "Structured data; SQL",
+      "Synthetic data; scikit-learn",
+      "Semi-structured data; Pandas"
+    ],
+    "correctIndex": 1,
+    "explanation": "Well-defined database columns describe structured data, best paired with SQL."
+  },
+  {
+    "id": "ds-022",
+    "topic": "data-sources",
+    "difficulty": "hard",
+    "question": "A patient's blood type shows \"O+\" in the lab system but \"AB+\" in the intake system. Which data quality dimension is most directly compromised?",
+    "choices": [
+      "Completeness",
+      "Consistency",
+      "Timeliness",
+      "Volume"
+    ],
+    "correctIndex": 1,
+    "explanation": "Conflicting values for the same fact across systems is a consistency problem."
+  },
+  {
+    "id": "ds-023",
+    "topic": "data-sources",
+    "difficulty": "hard",
+    "question": "A customer database has a required \"email\" field, but 15% of records have it entirely blank. This is best classified as:",
+    "choices": [
+      "Accuracy",
+      "Completeness",
+      "Consistency",
+      "Veracity"
+    ],
+    "correctIndex": 1,
+    "explanation": "Blank required fields are a completeness issue."
+  },
+  {
+    "id": "ds-024",
+    "topic": "data-sources",
+    "difficulty": "hard",
+    "question": "A retailer collects massive volumes of clickstream data every second, but the feed occasionally contains corrupted or fabricated entries injected by bots mimicking real users. Which big data dimension is most directly threatened?",
+    "choices": [
+      "Volume",
+      "Velocity",
+      "Variety",
+      "Veracity"
+    ],
+    "correctIndex": 3,
+    "explanation": "Corrupted or fabricated entries directly threaten the trustworthiness of the data \u2014 veracity."
+  },
+  {
+    "id": "ds-025",
+    "topic": "data-sources",
+    "difficulty": "hard",
+    "question": "A handful of financial records have transaction amounts off by exactly a factor of 100 (likely a decimal/import error). Given the sensitivity of the data, what's the most appropriate remediation?",
+    "choices": [
+      "Run an automated script to silently divide all values by 100 without review",
+      "Delete the affected records permanently",
+      "Manually review and correct the affected transaction amounts",
+      "Leave the data as-is since it's a small fraction of records"
+    ],
+    "correctIndex": 2,
+    "explanation": "For sensitive, high-stakes data, manual review ensures the correction is verified and accurate rather than blindly automated."
+  },
+  {
+    "id": "ds-026",
+    "topic": "data-sources",
+    "difficulty": "hard",
+    "question": "One dataset has ages like \"-5\" and \"250\" (logically impossible). A separate dataset has ages left entirely blank for some users. Which pairing correctly matches these issues?",
+    "choices": [
+      "Both are examples of incompleteness",
+      "The impossible ages are an accuracy/validity issue; the blank ages are a completeness issue",
+      "The impossible ages are a completeness issue; the blank ages are a consistency issue",
+      "Both are veracity issues only"
+    ],
+    "correctIndex": 1,
+    "explanation": "Impossible values are an accuracy/validity issue, while missing values are a completeness issue."
+  },
+  {
+    "id": "ds-027",
+    "topic": "data-sources",
+    "difficulty": "hard",
+    "question": "A model's features include \"salary\" ($30,000\u2013$250,000) and \"age\" (22\u201365). To prevent salary from dominating a distance-based calculation purely due to its larger numeric scale, the analyst should apply:",
+    "choices": [
+      "Binning",
+      "Data normalization or standardization",
+      "Flattening",
+      "Append"
+    ],
+    "correctIndex": 1,
+    "explanation": "Normalization or standardization rescales features so no single one dominates due to scale."
+  },
+  {
+    "id": "ds-028",
+    "topic": "data-sources",
+    "difficulty": "hard",
+    "question": "A housing-price dataset is heavily right-skewed, with most homes under $400,000 but a few mansions above $5 million distorting the distribution. An analyst applies a Box-Cox transformation with an exponent close to 0. What's the most likely intended effect?",
+    "choices": [
+      "Squaring each value to emphasize the outliers further",
+      "A logarithmic-like transformation that pulls in the long tail and makes the distribution more normal",
+      "Converting the feature into a categorical variable",
+      "Doubling every value in the dataset"
+    ],
+    "correctIndex": 1,
+    "explanation": "A Box-Cox transform with exponent near 0 approximates a log transform, compressing the long right tail toward normality."
+  },
+  {
+    "id": "ds-029",
+    "topic": "data-sources",
+    "difficulty": "hard",
+    "question": "A dataset stores height as two separate fields, \"feet\" and \"inches.\" A modeler combines both into a single \"total inches\" feature to reduce complexity. This is an example of:",
+    "choices": [
+      "Standardization",
+      "Binning",
+      "Feature engineering (combining features)",
+      "Data normalization"
+    ],
+    "correctIndex": 2,
+    "explanation": "Creating a new feature by combining existing ones is feature engineering."
+  },
+  {
+    "id": "ds-030",
+    "topic": "data-sources",
+    "difficulty": "hard",
+    "question": "A fraud-detection team wants to be sure their model is evaluated only on data it has genuinely never seen, to get an honest read on real-world performance. What practice directly ensures this?",
+    "choices": [
+      "Using the training set again for evaluation to save time",
+      "Keeping a held-out test set strictly separate from the training data",
+      "Normalizing the test set using different parameters than the training set",
+      "Removing all outliers from the test set before evaluation"
+    ],
+    "correctIndex": 1,
+    "explanation": "A strictly held-out test set ensures an honest, unbiased evaluation of real-world performance."
+  },
+  {
+    "id": "ds-031",
+    "topic": "data-sources",
+    "difficulty": "hard",
+    "question": "An analyst merges three quarterly sales datasets (identical columns: Date, Region, Revenue) into one yearly dataset by stacking the rows together. This is best described as:",
+    "choices": [
+      "Flattening",
+      "Appending",
+      "Binning",
+      "Normalizing"
+    ],
+    "correctIndex": 1,
+    "explanation": "Stacking rows from datasets with matching columns is appending."
+  },
+  {
+    "id": "ds-032",
+    "topic": "data-sources",
+    "difficulty": "hard",
+    "question": "A dataset of customer orders is deeply nested JSON, with each order containing a nested list of items, each with nested attributes like price and quantity. To load this into a simple rows-and-columns table, the analyst should:",
+    "choices": [
+      "Append the dataset to another one",
+      "Flatten the nested structure into a tabular format",
+      "Apply a Box-Cox transformation",
+      "Standardize the JSON fields"
+    ],
+    "correctIndex": 1,
+    "explanation": "Flattening converts nested JSON structures into a simple tabular format."
+  },
+  {
+    "id": "ds-033",
+    "topic": "data-sources",
+    "difficulty": "hard",
+    "question": "One analyst wants a single number representing the \"typical\" transaction size across millions of purchases; another wants to know how much transaction sizes vary from one purchase to the next. Which pair of statistics addresses these two goals, respectively?",
+    "choices": [
+      "Standard deviation; Mean",
+      "Mean; Standard deviation",
+      "Median; Mode",
+      "Range; Mean"
+    ],
+    "correctIndex": 1,
+    "explanation": "Mean captures the typical value; standard deviation captures how much values vary."
+  },
+  {
+    "id": "ds-034",
+    "topic": "data-sources",
+    "difficulty": "hard",
+    "question": "Dataset A has a mean exam score of 75 with very low standard deviation. Dataset B also has a mean of 75 but very high standard deviation. What does this tell an analyst?",
+    "choices": [
+      "Dataset A's scores are more tightly clustered around 75; Dataset B's are more spread out",
+      "Both datasets have identical distributions",
+      "Dataset A must have more data points than Dataset B",
+      "Standard deviation has no bearing on how scores are distributed"
+    ],
+    "correctIndex": 0,
+    "explanation": "Lower standard deviation means values cluster tightly around the mean; higher standard deviation means values are more spread out."
+  },
+  {
+    "id": "ds-035",
+    "topic": "data-sources",
+    "difficulty": "hard",
+    "question": "A biotech startup handling sensitive genomic data wants full physical control over its servers and accepts higher upfront costs to meet strict compliance requirements. Which infrastructure approach fits best?",
+    "choices": [
+      "A purely cloud-based solution",
+      "An on-premise solution",
+      "A federated learning solution",
+      "A synthetic data solution"
+    ],
+    "correctIndex": 1,
+    "explanation": "Full physical control over servers for compliance is the defining trait of an on-premise solution."
+  },
+  {
+    "id": "ds-036",
+    "topic": "data-sources",
+    "difficulty": "hard",
+    "question": "A mid-size company wants cost flexibility and scalability for production model deployments, but also wants certain sensitive components under direct local control. Which infrastructure approach fits best?",
+    "choices": [
+      "Fully on-premise",
+      "Fully cloud-based",
+      "Hybrid (cloud + on-premise components)",
+      "Fully synthetic data-based"
+    ],
+    "correctIndex": 2,
+    "explanation": "A hybrid approach combines cloud scalability with local control over sensitive components."
+  },
+  {
+    "id": "ds-037",
+    "topic": "data-sources",
+    "difficulty": "hard",
+    "question": "A data science student in an active Kaggle competition wants to see the specific strategies other competitors are using on the same leaderboard. Which Kaggle feature is most directly designed for this?",
+    "choices": [
+      "Discussion forums",
+      "Learning resources",
+      "Competitions",
+      "Dataset licensing pages"
+    ],
+    "correctIndex": 0,
+    "explanation": "Discussion forums are where competitors share and discuss strategies for a given competition."
+  },
+  {
+    "id": "ds-038",
+    "topic": "data-sources",
+    "difficulty": "hard",
+    "question": "A manufacturer wants to train a defect-detection model using thousands of assembly-line photos labeled \"defective\" or \"not defective\" by inspectors. Which data type/tool pairing fits best?",
+    "choices": [
+      "Structured data; SQL",
+      "Unstructured data; PyTorch",
+      "Synthetic data; scikit-learn",
+      "Semi-structured data; Pandas"
+    ],
+    "correctIndex": 1,
+    "explanation": "Photos are unstructured data, typically handled with deep learning frameworks like PyTorch."
+  },
+  {
+    "id": "ds-039",
+    "topic": "data-sources",
+    "difficulty": "hard",
+    "question": "A bank must keep precise, well-organized records of every transaction, account holder, and balance, typically in relational tables. Which data type is most characteristic of this core recordkeeping?",
+    "choices": [
+      "Unstructured data",
+      "Structured data in relational databases",
+      "Synthetic data",
+      "Semi-structured data"
+    ],
+    "correctIndex": 1,
+    "explanation": "Precise, well-organized relational tables are the definition of structured data."
+  },
+  {
+    "id": "ds-040",
+    "topic": "data-sources",
+    "difficulty": "hard",
+    "question": "An analyst evaluates how much it costs the organization to store and process its ever-growing volume of server log data, factoring in access frequency and infrastructure needs. Which metric are they most directly assessing?",
+    "choices": [
+      "Time to value for data",
+      "Data storage expense",
+      "Transformation error frequency",
+      "Data-to-error ratio"
+    ],
+    "correctIndex": 1,
+    "explanation": "This describes assessing the cost of storing and processing data \u2014 data storage expense."
+  },
+  {
+    "id": "rk-001",
+    "topic": "reasoning-knowledge",
+    "difficulty": "medium",
+    "question": "What is the primary purpose of knowledge representation in AI systems?",
+    "choices": [
+      "To compress data for faster storage",
+      "To store what the system knows in a structured, usable form",
+      "To visualize data for human users",
+      "To encrypt sensitive information"
+    ],
+    "correctIndex": 1,
+    "explanation": "Knowledge representation is about structuring what an AI system knows so it can be used for reasoning and decision-making."
+  },
+  {
+    "id": "rk-002",
+    "topic": "reasoning-knowledge",
+    "difficulty": "medium",
+    "question": "Which AI discipline is specifically focused on answering questions and drawing new conclusions from known information?",
+    "choices": [
+      "Natural language processing",
+      "Knowledge representation",
+      "Automated reasoning",
+      "Machine learning"
+    ],
+    "correctIndex": 2,
+    "explanation": "Automated reasoning focuses on deriving new conclusions and answering questions from existing knowledge."
+  },
+  {
+    "id": "rk-003",
+    "topic": "reasoning-knowledge",
+    "difficulty": "medium",
+    "question": "An ontology in AI is best described as:",
+    "choices": [
+      "A database of industry-specific facts",
+      "A programming language's syntax rules",
+      "An organization of things into a hierarchy of categories",
+      "A system for classified information access levels"
+    ],
+    "correctIndex": 1,
+    "explanation": "An ontology organizes concepts and entities into hierarchical categories and relationships."
+  },
+  {
+    "id": "rk-004",
+    "topic": "reasoning-knowledge",
+    "difficulty": "medium",
+    "question": "Which approach to knowledge representation specifically emphasizes tractability and efficient reasoning processes?",
+    "choices": [
+      "Semantic networks",
+      "Description logics",
+      "Existential graphs",
+      "Overriding"
+    ],
+    "correctIndex": 1,
+    "explanation": "Description logics are designed to balance expressiveness with tractable, efficient reasoning."
+  },
+  {
+    "id": "rk-005",
+    "topic": "reasoning-knowledge",
+    "difficulty": "medium",
+    "question": "Why are probability statements in AI made with respect to a \"knowledge state\" rather than the real world?",
+    "choices": [
+      "To guarantee 100% accurate predictions",
+      "To account for the uncertainty in what is actually known",
+      "To eliminate the need for data",
+      "To make statements contradict each other on purpose"
+    ],
+    "correctIndex": 1,
+    "explanation": "Probabilities reflect the agent's uncertainty given what it currently knows, not some fixed fact about the real world."
+  },
+  {
+    "id": "rk-006",
+    "topic": "reasoning-knowledge",
+    "difficulty": "medium",
+    "question": "How do real-world agents typically handle uncertainty about the environment?",
+    "choices": [
+      "By avoiding any action that carries risk",
+      "By assuming the environment is always deterministic",
+      "By tracking a belief state and generating a contingency plan",
+      "By waiting for full information before acting"
+    ],
+    "correctIndex": 2,
+    "explanation": "Agents under uncertainty maintain a belief state (probabilistic estimate) and prepare contingency plans for likely outcomes."
+  },
+  {
+    "id": "rk-007",
+    "topic": "reasoning-knowledge",
+    "difficulty": "medium",
+    "question": "In decision theory, \"utility\" is best defined as:",
+    "choices": [
+      "The number of possible outcomes of an action",
+      "A measure of an agent's preference or desirability of outcomes",
+      "The probability that an action succeeds",
+      "The average of all outcome utilities"
+    ],
+    "correctIndex": 1,
+    "explanation": "Utility quantifies how desirable an outcome is to the agent."
+  },
+  {
+    "id": "rk-008",
+    "topic": "reasoning-knowledge",
+    "difficulty": "medium",
+    "question": "The principle of Maximum Expected Utility (MEU) states that an agent should:",
+    "choices": [
+      "Choose the action with the lowest risk",
+      "Average the utilities of all possible actions",
+      "Choose the action that yields the most expected benefit",
+      "Choose randomly among equally likely outcomes"
+    ],
+    "correctIndex": 2,
+    "explanation": "MEU says a rational agent should choose the action that maximizes its expected utility, combining probabilities and payoffs."
+  },
+  {
+    "id": "rk-009",
+    "topic": "reasoning-knowledge",
+    "difficulty": "medium",
+    "question": "A domain has three Boolean variables. A fourth Boolean variable is added. How many entries does the full joint distribution now have?",
+    "choices": [
+      "8",
+      "12",
+      "16",
+      "24"
+    ],
+    "correctIndex": 2,
+    "explanation": "With 4 Boolean variables, the joint distribution has 2^4 = 16 entries."
+  },
+  {
+    "id": "rk-010",
+    "topic": "reasoning-knowledge",
+    "difficulty": "medium",
+    "question": "What effect do independence assertions have on representing a full joint distribution?",
+    "choices": [
+      "They increase the size of the representation",
+      "They have no effect on complexity",
+      "They reduce the amount of information needed",
+      "They make the distribution non-computable"
+    ],
+    "correctIndex": 2,
+    "explanation": "Independence assertions let the joint distribution be factored into smaller pieces, reducing the information needed."
+  },
+  {
+    "id": "rk-011",
+    "topic": "reasoning-knowledge",
+    "difficulty": "medium",
+    "question": "What is the purpose of marginalization in probabilistic inference?",
+    "choices": [
+      "To calculate the probability of any proposition regardless of relevance",
+      "To sum out irrelevant variables and focus on the ones that matter",
+      "To increase the number of variables under consideration",
+      "To convert continuous variables into discrete ones"
+    ],
+    "correctIndex": 1,
+    "explanation": "Marginalization sums out variables that aren't relevant to the question at hand, leaving the distribution over the variables of interest."
+  },
+  {
+    "id": "rk-012",
+    "topic": "reasoning-knowledge",
+    "difficulty": "medium",
+    "question": "Which term describes the probability that a continuous random variable falls within a particular range of values?",
+    "choices": [
+      "Joint probability distribution",
+      "Categorical distribution",
+      "Probability density function",
+      "Marginal distribution"
+    ],
+    "correctIndex": 2,
+    "explanation": "A probability density function (integrated over a range) gives the probability a continuous variable falls within that range."
+  },
+  {
+    "id": "rk-013",
+    "topic": "reasoning-knowledge",
+    "difficulty": "medium",
+    "question": "In NLP, \"grammar\" refers to:",
+    "choices": [
+      "A list of all allowable words in a language",
+      "A set of rules defining the tree structure of allowable phrases",
+      "A set of rules defining word pronunciation",
+      "A dictionary of word meanings"
+    ],
+    "correctIndex": 1,
+    "explanation": "Grammar defines the syntactic rules governing how words combine into valid phrase structures."
+  },
+  {
+    "id": "rk-014",
+    "topic": "reasoning-knowledge",
+    "difficulty": "medium",
+    "question": "The bag-of-words model represents text as:",
+    "choices": [
+      "An ordered sequence of words with grammar preserved",
+      "A tree structure of phrases",
+      "An unordered collection of words",
+      "A set of labeled sentiment scores"
+    ],
+    "correctIndex": 2,
+    "explanation": "Bag-of-words discards word order and grammar, representing text as an unordered collection (counts) of words."
+  },
+  {
+    "id": "rk-015",
+    "topic": "reasoning-knowledge",
+    "difficulty": "medium",
+    "question": "Which method allows the bag-of-words model to classify text accurately based on word occurrences?",
+    "choices": [
+      "K-means clustering",
+      "Naive Bayes formula",
+      "Exponential smoothing",
+      "Logistic regression"
+    ],
+    "correctIndex": 1,
+    "explanation": "The Naive Bayes formula is classically paired with bag-of-words to classify text based on word occurrence probabilities."
+  },
+  {
+    "id": "rk-016",
+    "topic": "reasoning-knowledge",
+    "difficulty": "medium",
+    "question": "In the context of word embeddings, which pair of words best represents a *topical* relationship (same domain/context) rather than a sentiment relationship?",
+    "choices": [
+      "\"Happy\" and \"Sad\"",
+      "\"Rain\" and \"Sunshine\" in weather",
+      "\"Angry\" and \"Furious\"",
+      "\"Good\" and \"Bad\""
+    ],
+    "correctIndex": 1,
+    "explanation": "\"Rain\" and \"Sunshine\" share a topical/domain context (weather) rather than being opposites in sentiment."
+  },
+  {
+    "id": "rk-017",
+    "topic": "reasoning-knowledge",
+    "difficulty": "medium",
+    "question": "What is one key difference between greedy decoding and beam search in sequence-to-sequence models?",
+    "choices": [
+      "Greedy decoding is only used during training; beam search only during evaluation",
+      "Greedy decoding selects the top word at each step; beam search keeps multiple candidate sequences",
+      "Greedy decoding processes sequences in parallel; beam search is sequential",
+      "Beam search always produces worse results than greedy decoding"
+    ],
+    "correctIndex": 1,
+    "explanation": "Greedy decoding picks the single best word at each step, while beam search tracks multiple candidate sequences to find a better overall result."
+  },
+  {
+    "id": "rk-018",
+    "topic": "reasoning-knowledge",
+    "difficulty": "medium",
+    "question": "A smartphone company wants to improve voice recognition using data from millions of user devices, without collecting that raw data centrally to protect privacy. Which technique fits best?",
+    "choices": [
+      "Supervised learning",
+      "Reinforcement learning",
+      "Federated learning",
+      "Unsupervised learning"
+    ],
+    "correctIndex": 2,
+    "explanation": "Federated learning trains models across decentralized devices without moving raw data to a central server."
+  },
+  {
+    "id": "rk-019",
+    "topic": "reasoning-knowledge",
+    "difficulty": "medium",
+    "question": "In reinforcement learning, a \"sparse reward\" is best exemplified by:",
+    "choices": [
+      "Continuous feedback given after every single move",
+      "A win/loss reward given only at the end of a game",
+      "A reward given for every correct word predicted",
+      "A penalty applied at regular time intervals regardless of performance"
+    ],
+    "correctIndex": 1,
+    "explanation": "A sparse reward provides feedback only rarely, such as a single win/loss signal at the end of an episode."
+  },
+  {
+    "id": "rk-020",
+    "topic": "reasoning-knowledge",
+    "difficulty": "medium",
+    "question": "Which application of reinforcement learning involves inferring an agent's reward function by observing its behavior (e.g., predicting a taxi driver's likely route from GPS data)?",
+    "choices": [
+      "Deep Q-learning",
+      "Inverse reinforcement learning",
+      "Supervised policy learning",
+      "Federated reinforcement learning"
+    ],
+    "correctIndex": 1,
+    "explanation": "Inverse reinforcement learning infers the underlying reward function from observed behavior."
+  },
+  {
+    "id": "rk-021",
+    "topic": "reasoning-knowledge",
+    "difficulty": "hard",
+    "question": "A diagnosis system assigns 0.7 probability to \"patient has flu\" based on symptoms reported so far. When a new lab result comes in, this probability changes \u2014 even though the patient's actual physical condition never changed. This illustrates why probability statements are made with respect to:",
+    "choices": [
+      "The real world directly",
+      "A knowledge state, since uncertainty reflects what is known, not the world itself",
+      "A joint probability distribution only",
+      "A utility function"
+    ],
+    "correctIndex": 1,
+    "explanation": "The probability reflects the system's current knowledge state, which updates as new evidence arrives, even though the real-world condition itself didn't change."
+  },
+  {
+    "id": "rk-022",
+    "topic": "reasoning-knowledge",
+    "difficulty": "hard",
+    "question": "A Mars rover loses part of its sensor suite during a dust storm. Rather than freezing, it maintains a probabilistic estimate of its surroundings and prepares a fallback plan in case its first move is wrong. This best illustrates:",
+    "choices": [
+      "A deterministic transition model",
+      "Tracking a belief state and generating a contingency plan",
+      "A simple reflex response",
+      "Marginalization over irrelevant variables"
+    ],
+    "correctIndex": 1,
+    "explanation": "Maintaining a probabilistic estimate and a fallback plan under uncertainty is exactly belief-state tracking with contingency planning."
+  },
+  {
+    "id": "rk-023",
+    "topic": "reasoning-knowledge",
+    "difficulty": "hard",
+    "question": "A domain has 5 Boolean variables. How many entries are in the full joint probability distribution?",
+    "choices": [
+      "10",
+      "25",
+      "32",
+      "64"
+    ],
+    "correctIndex": 2,
+    "explanation": "2^5 = 32 entries in the full joint distribution."
+  },
+  {
+    "id": "rk-024",
+    "topic": "reasoning-knowledge",
+    "difficulty": "hard",
+    "question": "A joint distribution covers Weather, Traffic, and Mood. Mood turns out to be independent of both Weather and Traffic. What's the most direct benefit of discovering this?",
+    "choices": [
+      "The joint distribution must be recomputed with more variables",
+      "The distribution can be factored into smaller pieces, reducing the information needed to represent it",
+      "It guarantees Weather and Traffic are also independent of each other",
+      "It increases the number of entries needed in the table"
+    ],
+    "correctIndex": 1,
+    "explanation": "Independence lets the joint distribution factor into smaller, separate pieces, reducing representation size."
+  },
+  {
+    "id": "rk-025",
+    "topic": "reasoning-knowledge",
+    "difficulty": "hard",
+    "question": "An analyst wants the probability that it rains, regardless of whether traffic is heavy or light, from a joint distribution over Rain and Traffic. What should they do?",
+    "choices": [
+      "Multiply the two variables' distributions together",
+      "Marginalize out the Traffic variable",
+      "Apply Bayes' rule to invert the distribution",
+      "Normalize the joint distribution to sum to 0"
+    ],
+    "correctIndex": 1,
+    "explanation": "Marginalizing out Traffic sums over its values, leaving just the distribution over Rain."
+  },
+  {
+    "id": "rk-026",
+    "topic": "reasoning-knowledge",
+    "difficulty": "hard",
+    "question": "A continuous variable represents a driver's exact reaction time in milliseconds. What tool computes the probability that reaction time falls between 200ms and 250ms?",
+    "choices": [
+      "A joint probability table",
+      "A categorical distribution",
+      "A probability density function integrated over that range",
+      "A simple ratio of favorable to total outcomes"
+    ],
+    "correctIndex": 2,
+    "explanation": "For continuous variables, probabilities over a range come from integrating the probability density function across that range."
+  },
+  {
+    "id": "rk-027",
+    "topic": "reasoning-knowledge",
+    "difficulty": "hard",
+    "question": "A gambler chooses between Bet A (90% chance of winning $10) and Bet B (10% chance of winning $500), where the gambler's value for money isn't strictly proportional to the dollar amount. Which principle guides a rational agent's choice here?",
+    "choices": [
+      "Always take the higher probability of winning",
+      "Always take the higher dollar payoff",
+      "Choose the action that maximizes expected utility, based on the agent's own utility function",
+      "Choose randomly since both bets are equally valid"
+    ],
+    "correctIndex": 2,
+    "explanation": "Rational choice under uncertainty is guided by maximizing expected utility, not just probability or raw payoff."
+  },
+  {
+    "id": "rk-028",
+    "topic": "reasoning-knowledge",
+    "difficulty": "hard",
+    "question": "Which scenario best illustrates the difference between \"utility\" and simple \"probability of success\"?",
+    "choices": [
+      "An agent always picks the option most likely to succeed, regardless of reward size",
+      "An agent turns down a 95%-likely small reward for a 60%-likely large reward, because it values the large reward more highly relative to the risk",
+      "An agent flips a coin between two equally probable options",
+      "An agent ignores outcomes and acts randomly"
+    ],
+    "correctIndex": 1,
+    "explanation": "Choosing a riskier option because its utility (value) outweighs the higher-probability but smaller reward shows utility differs from mere success probability."
+  },
+  {
+    "id": "rk-029",
+    "topic": "reasoning-knowledge",
+    "difficulty": "hard",
+    "question": "A chatbot is told \"all mammals are animals\" and \"all dogs are mammals,\" and later infers \"all dogs are animals\" without being told this directly. Which capability is being demonstrated?",
+    "choices": [
+      "Knowledge representation combined with automated reasoning",
+      "Bag-of-words modeling",
+      "Passive sensing",
+      "Federated learning"
+    ],
+    "correctIndex": 0,
+    "explanation": "Storing facts (knowledge representation) and deriving new conclusions from them (automated reasoning) together produce this inference."
+  },
+  {
+    "id": "rk-030",
+    "topic": "reasoning-knowledge",
+    "difficulty": "hard",
+    "question": "A legal-tech company wants an AI system that answers simple, well-defined contract queries quickly and reliably, even if it sacrifices some expressive power for complex, nuanced legal relationships. Which knowledge representation approach fits best?",
+    "choices": [
+      "Fully expressive first-order logic with no constraints",
+      "Description logics, which emphasize tractability and efficient reasoning",
+      "An unstructured bag-of-words model",
+      "A purely statistical embedding with no logical structure"
+    ],
+    "correctIndex": 1,
+    "explanation": "Description logics trade some expressiveness for tractable, efficient, reliable reasoning \u2014 a good fit here."
+  },
+  {
+    "id": "rk-031",
+    "topic": "reasoning-knowledge",
+    "difficulty": "hard",
+    "question": "A spam classifier uses the frequency of individual words in an email, ignoring word order and grammar entirely. This text representation is called:",
+    "choices": [
+      "A dependency parse tree",
+      "A bag-of-words model",
+      "A sequence-to-sequence model",
+      "A knowledge graph"
+    ],
+    "correctIndex": 3,
+    "explanation": "Ignoring order/grammar and using word frequency is the defining trait of the bag-of-words model."
+  },
+  {
+    "id": "rk-032",
+    "topic": "reasoning-knowledge",
+    "difficulty": "hard",
+    "question": "Which pair of words would most likely NOT represent a strong topical relationship in word embedding space, compared to the others?",
+    "choices": [
+      "\"Doctor\" and \"Hospital\"",
+      "\"Umbrella\" and \"Rain\"",
+      "\"Guitar\" and \"Concert\"",
+      "\"Happy\" and \"Furniture\""
+    ],
+    "correctIndex": 3,
+    "explanation": "\"Happy\" and \"Furniture\" share no common topic/domain, unlike the other pairs which are all topically related."
+  },
+  {
+    "id": "rk-033",
+    "topic": "reasoning-knowledge",
+    "difficulty": "hard",
+    "question": "In sequence-to-sequence translation, why might beam search produce a better overall translation than greedy decoding, despite being more computationally expensive?",
+    "choices": [
+      "Beam search always guarantees the mathematically optimal sequence",
+      "Beam search explores multiple candidate sequences simultaneously, avoiding getting locked into an early word choice that turns out suboptimal later",
+      "Greedy decoding requires more memory than beam search",
+      "Beam search ignores probability scores entirely"
+    ],
+    "correctIndex": 1,
+    "explanation": "Beam search keeps several candidate sequences alive, avoiding the trap of an early greedy choice leading to a worse overall result."
+  },
+  {
+    "id": "rk-034",
+    "topic": "reasoning-knowledge",
+    "difficulty": "hard",
+    "question": "A company has thousands of unlabeled customer support tickets and wants to discover natural groupings/themes without predefining categories. Which type of learning fits best?",
+    "choices": [
+      "Supervised learning",
+      "Unsupervised learning",
+      "Reinforcement learning",
+      "Weakly supervised learning"
+    ],
+    "correctIndex": 1,
+    "explanation": "Discovering groupings in unlabeled data without predefined categories is the classic use case for unsupervised learning."
+  },
+  {
+    "id": "rk-035",
+    "topic": "reasoning-knowledge",
+    "difficulty": "hard",
+    "question": "A ride-share app wants to improve destination prediction using data generated on millions of phones, but regional privacy laws prevent raw location data from ever leaving each device. Which learning paradigm directly addresses this?",
+    "choices": [
+      "Supervised learning",
+      "Unsupervised learning",
+      "Federated learning",
+      "Reinforcement learning"
+    ],
+    "correctIndex": 2,
+    "explanation": "Federated learning trains on-device without raw data ever leaving the device, satisfying this privacy constraint."
+  },
+  {
+    "id": "rk-036",
+    "topic": "reasoning-knowledge",
+    "difficulty": "hard",
+    "question": "A patient-risk dataset includes self-reported smoking status, but many patients are known to under-report smoking. Training on this data is an example of:",
+    "choices": [
+      "Reinforcement learning",
+      "Weakly supervised learning, due to noisy/imprecise labels",
+      "Federated learning",
+      "Fully supervised learning with clean labels"
+    ],
+    "correctIndex": 1,
+    "explanation": "Labels that are known to be noisy or imprecise (under-reported smoking) make this weakly supervised learning."
+  },
+  {
+    "id": "rk-037",
+    "topic": "reasoning-knowledge",
+    "difficulty": "hard",
+    "question": "In a reinforcement learning setup for a strategy board game, the agent gets no feedback during play and only learns whether it won or lost once the game ends. This is:",
+    "choices": [
+      "Dense reward",
+      "Sparse reward",
+      "Continuous reward",
+      "Intermediate reward"
+    ],
+    "correctIndex": 1,
+    "explanation": "A reward given only at the very end of an episode (win/loss) is a classic sparse reward setup."
+  },
+  {
+    "id": "rk-038",
+    "topic": "reasoning-knowledge",
+    "difficulty": "hard",
+    "question": "Researchers study experienced firefighters' recorded decisions during emergencies to infer what implicit reward function (minimizing time, minimizing risk to civilians, etc.) seems to guide their behavior \u2014 without firefighters ever stating their goals. This is an application of:",
+    "choices": [
+      "Supervised classification",
+      "Inverse reinforcement learning",
+      "Federated learning",
+      "Bag-of-words modeling"
+    ],
+    "correctIndex": 1,
+    "explanation": "Inferring the reward function from observed behavior is exactly what inverse reinforcement learning does."
+  },
+  {
+    "id": "rk-039",
+    "topic": "reasoning-knowledge",
+    "difficulty": "hard",
+    "question": "A spam filter incorrectly flags 5% of legitimate emails as spam, while 2% of actual spam reaches the inbox. The 5% figure corresponds to which error type?",
+    "choices": [
+      "False negative rate",
+      "True positive rate",
+      "False positive rate",
+      "True negative rate"
+    ],
+    "correctIndex": 2,
+    "explanation": "Legitimate emails incorrectly flagged as spam are false positives, so 5% is the false positive rate."
+  },
+  {
+    "id": "rk-040",
+    "topic": "reasoning-knowledge",
+    "difficulty": "hard",
+    "question": "A credit-approval dataset has only 2% of examples labeled \"defaulted\" and 98% \"repaid,\" so the model tends to almost always predict \"repaid.\" Which technique most directly helps the model pay more attention to the minority class?",
+    "choices": [
+      "Undersampling the minority class further",
+      "A weighted loss function that penalizes misclassifying the minority class more heavily",
+      "Duplicating the majority class examples",
+      "Removing the minority class examples entirely from training"
+    ],
+    "correctIndex": 1,
+    "explanation": "A weighted loss function increases the penalty for misclassifying minority-class examples, directly countering class imbalance."
+  },
+  {
+    "id": "toa-001",
+    "topic": "types-of-ai",
+    "difficulty": "medium",
+    "question": "A surveillance system has complete access to all relevant information within the area it monitors at all times. This is an example of a:",
+    "choices": [
+      "Partially observable environment",
+      "Fully observable environment",
+      "Stochastic environment",
+      "Episodic environment"
+    ],
+    "correctIndex": 1,
+    "explanation": "A fully observable environment gives the agent complete access to all relevant state information at all times."
+  },
+  {
+    "id": "toa-002",
+    "topic": "types-of-ai",
+    "difficulty": "medium",
+    "question": "A self-driving car navigating through traffic cannot know everything happening beyond its sensors' range (e.g., a car hidden around a corner). This makes its environment:",
+    "choices": [
+      "Fully observable",
+      "Partially observable",
+      "Static",
+      "Episodic"
+    ],
+    "correctIndex": 1,
+    "explanation": "Since the agent's sensors can't capture the full state (hidden cars), the environment is partially observable."
+  },
+  {
+    "id": "toa-003",
+    "topic": "types-of-ai",
+    "difficulty": "medium",
+    "question": "What is the key distinction between episodic and sequential task environments?",
+    "choices": [
+      "The complexity of the tasks involved",
+      "The presence of a clear goal for the agent",
+      "Whether current actions influence future decision-making",
+      "The speed at which tasks are completed"
+    ],
+    "correctIndex": 2,
+    "explanation": "In sequential environments, current actions affect future decisions; in episodic environments, each episode is independent."
+  },
+  {
+    "id": "toa-004",
+    "topic": "types-of-ai",
+    "difficulty": "medium",
+    "question": "In a semidynamic environment:",
+    "choices": [
+      "The environment changes constantly while the agent deliberates",
+      "The environment itself doesn't change with time, but the agent's performance score does",
+      "The agent's performance score remains constant regardless of time",
+      "The agent never needs to reassess the world"
+    ],
+    "correctIndex": 1,
+    "explanation": "A semidynamic environment stays the same while the agent thinks, but the agent's performance score can still change with time (e.g., a ticking clock)."
+  },
+  {
+    "id": "toa-005",
+    "topic": "types-of-ai",
+    "difficulty": "medium",
+    "question": "A chess clock ticking down while a player thinks (even though the board itself doesn't change) is a classic example of what kind of environment?",
+    "choices": [
+      "Static",
+      "Dynamic",
+      "Semidynamic",
+      "Stochastic"
+    ],
+    "correctIndex": 2,
+    "explanation": "The board state doesn't change, but the clock (affecting performance) does \u2014 this is the textbook example of a semidynamic environment."
+  },
+  {
+    "id": "toa-006",
+    "topic": "types-of-ai",
+    "difficulty": "medium",
+    "question": "Which type of agent makes decisions based only on the current percept and a fixed set of condition-action rules, with no memory of the past?",
+    "choices": [
+      "Model-based reflex agent",
+      "Goal-based agent",
+      "Simple reflex agent",
+      "Utility-based agent"
+    ],
+    "correctIndex": 2,
+    "explanation": "A simple reflex agent reacts only to the current percept using condition-action rules, without any memory of history."
+  },
+  {
+    "id": "toa-007",
+    "topic": "types-of-ai",
+    "difficulty": "medium",
+    "question": "An agent that maintains an internal representation of aspects of the world it can't currently see is called a:",
+    "choices": [
+      "Simple reflex agent",
+      "Model-based reflex agent",
+      "Goal-based agent",
+      "Learning agent"
+    ],
+    "correctIndex": 1,
+    "explanation": "A model-based reflex agent keeps an internal model/state to track aspects of the world not currently observable."
+  },
+  {
+    "id": "toa-008",
+    "topic": "types-of-ai",
+    "difficulty": "medium",
+    "question": "An agent that doesn't just aim to reach a goal but also weighs how *desirable* different ways of reaching it are is a:",
+    "choices": [
+      "Simple reflex agent",
+      "Model-based reflex agent",
+      "Goal-based agent",
+      "Utility-based agent"
+    ],
+    "correctIndex": 3,
+    "explanation": "A utility-based agent weighs the desirability (utility) of different outcomes, not just whether a goal is reached."
+  },
+  {
+    "id": "toa-009",
+    "topic": "types-of-ai",
+    "difficulty": "medium",
+    "question": "A camera capturing an image in daylight (without emitting any signal of its own) is an example of:",
+    "choices": [
+      "Active sensing",
+      "Passive sensing",
+      "Stochastic sensing",
+      "Sequential sensing"
+    ],
+    "correctIndex": 1,
+    "explanation": "Passive sensing captures existing signals from the environment without emitting anything itself."
+  },
+  {
+    "id": "toa-010",
+    "topic": "types-of-ai",
+    "difficulty": "medium",
+    "question": "A bat using ultrasound to navigate, or a robot using radar to detect obstacles, are examples of:",
+    "choices": [
+      "Passive sensing",
+      "Active sensing",
+      "Episodic sensing",
+      "Deterministic sensing"
+    ],
+    "correctIndex": 1,
+    "explanation": "Active sensing involves emitting a signal (ultrasound, radar) and interpreting the response."
+  },
+  {
+    "id": "toa-011",
+    "topic": "types-of-ai",
+    "difficulty": "medium",
+    "question": "Which of the following best describes a deterministic environment?",
+    "choices": [
+      "The next state is fully determined by the current state and the agent's action",
+      "The next state involves randomness even given the same action",
+      "The agent has no way of predicting outcomes",
+      "Multiple agents interact and compete for resources"
+    ],
+    "correctIndex": 0,
+    "explanation": "In a deterministic environment, the next state is completely determined by the current state and action, with no randomness."
+  },
+  {
+    "id": "toa-012",
+    "topic": "types-of-ai",
+    "difficulty": "medium",
+    "question": "When AI systems are trained on historical data containing structural bias against certain groups, the resulting risk is typically described as:",
+    "choices": [
+      "Elimination of bias in future outputs",
+      "Replication or amplification of discrimination in the AI's outputs",
+      "Guaranteed fairness due to large data volume",
+      "Reduced need for human oversight"
+    ],
+    "correctIndex": 1,
+    "explanation": "Models trained on biased historical data tend to replicate or amplify that discrimination in their outputs."
+  },
+  {
+    "id": "toa-013",
+    "topic": "types-of-ai",
+    "difficulty": "medium",
+    "question": "A major concern with biometric surveillance combined with AI is:",
+    "choices": [
+      "Reduced accuracy of identification",
+      "Expansion of monitoring scope beyond traditional methods",
+      "Decreased ability to track individuals",
+      "Elimination of privacy concerns altogether"
+    ],
+    "correctIndex": 1,
+    "explanation": "AI-powered biometric surveillance can dramatically expand monitoring scope beyond what was previously feasible, raising privacy concerns."
+  },
+  {
+    "id": "toa-014",
+    "topic": "types-of-ai",
+    "difficulty": "medium",
+    "question": "AI algorithms that personalize social media content can raise ethical concerns because they may:",
+    "choices": [
+      "Reduce user engagement across the board",
+      "Amplify certain behaviors and reinforce filter bubbles/echo chambers",
+      "Automatically remove biased content",
+      "Guarantee balanced exposure to all viewpoints"
+    ],
+    "correctIndex": 1,
+    "explanation": "Personalization algorithms can amplify engagement-driving behaviors, reinforcing filter bubbles and echo chambers."
+  },
+  {
+    "id": "toa-015",
+    "topic": "types-of-ai",
+    "difficulty": "medium",
+    "question": "One documented risk of ChatGPT-generated content is that it:",
+    "choices": [
+      "Always contains factually perfect information",
+      "May lack common sense in certain contexts",
+      "Cannot generate human-like language",
+      "Is immune to bias"
+    ],
+    "correctIndex": 1,
+    "explanation": "Large language models can produce plausible-sounding but factually wrong or common-sense-lacking content."
+  },
+  {
+    "id": "toa-016",
+    "topic": "types-of-ai",
+    "difficulty": "medium",
+    "question": "An appropriate ethical guardrail when using ChatGPT with sensitive business data is to:",
+    "choices": [
+      "Feed in as much raw data as possible for accuracy",
+      "Anonymize confidential data before use",
+      "Avoid validating any outputs",
+      "Disable all logging systems entirely"
+    ],
+    "correctIndex": 1,
+    "explanation": "Anonymizing sensitive data before use protects confidentiality when working with AI tools."
+  },
+  {
+    "id": "toa-017",
+    "topic": "types-of-ai",
+    "difficulty": "medium",
+    "question": "Differential privacy is distinct from other privacy measures because it:",
+    "choices": [
+      "Allows unrestricted access to individual records",
+      "Guarantees attackers can easily re-identify individuals",
+      "Prevents re-identification even across multiple queries or linked databases",
+      "Focuses only on sharing de-identified records with no further protection"
+    ],
+    "correctIndex": 2,
+    "explanation": "Differential privacy provides mathematical guarantees against re-identification even when data is queried repeatedly or linked with other datasets."
+  },
+  {
+    "id": "toa-018",
+    "topic": "types-of-ai",
+    "difficulty": "medium",
+    "question": "A key ethical concern with using AI for predictive policing is that it:",
+    "choices": [
+      "Eliminates the need for human judgment entirely, which is always positive",
+      "May intensify or reinforce existing discrimination",
+      "Guarantees unbiased outcomes due to data-driven decisions",
+      "Reduces crime rates purely through deterrence"
+    ],
+    "correctIndex": 1,
+    "explanation": "Predictive policing models trained on biased historical crime data can intensify or reinforce existing discriminatory patterns."
+  },
+  {
+    "id": "toa-019",
+    "topic": "types-of-ai",
+    "difficulty": "medium",
+    "question": "A tech company building an AI-driven hiring platform wants to ensure hiring decisions aren't influenced by hidden bias. Which regulatory concern should they prioritize?",
+    "choices": [
+      "Data storage costs",
+      "Algorithmic transparency",
+      "Server uptime",
+      "Network bandwidth"
+    ],
+    "correctIndex": 1,
+    "explanation": "Algorithmic transparency helps ensure hiring decisions can be explained and audited for hidden bias."
+  },
+  {
+    "id": "toa-020",
+    "topic": "types-of-ai",
+    "difficulty": "medium",
+    "question": "Which of these is a genuine safety-critical application increasingly relying on AI techniques?",
+    "choices": [
+      "Managing social media hashtags",
+      "Driving cars",
+      "Formatting spreadsheets",
+      "Designing marketing slogans"
+    ],
+    "correctIndex": 1,
+    "explanation": "Autonomous driving is a safety-critical application where AI failures can have serious real-world consequences."
+  },
+  {
+    "id": "toa-021",
+    "topic": "types-of-ai",
+    "difficulty": "hard",
+    "question": "A poker-playing agent doesn't know its opponents' hidden cards, but does know the full betting history of the current hand, which will affect future betting rounds. Which combination of environment properties best describes this?",
+    "choices": [
+      "Fully observable, episodic",
+      "Partially observable, sequential",
+      "Fully observable, static",
+      "Partially observable, episodic"
+    ],
+    "correctIndex": 1,
+    "explanation": "Hidden cards make it partially observable, and the fact that betting history affects future rounds makes it sequential."
+  },
+  {
+    "id": "toa-022",
+    "topic": "types-of-ai",
+    "difficulty": "hard",
+    "question": "An autonomous delivery drone recalculates its route mid-flight as traffic, weather, and other independent agents (cars, pedestrians) change the world around it in real time. This environment is best classified as:",
+    "choices": [
+      "Static",
+      "Semidynamic",
+      "Dynamic",
+      "Deterministic"
+    ],
+    "correctIndex": 2,
+    "explanation": "A dynamic environment changes on its own while the agent is deliberating, as described here."
+  },
+  {
+    "id": "toa-023",
+    "topic": "types-of-ai",
+    "difficulty": "hard",
+    "question": "A thermostat turns heat on below a set temperature and off above it, using no memory of past readings. This is best classified as a:",
+    "choices": [
+      "Goal-based agent",
+      "Model-based reflex agent",
+      "Simple reflex agent",
+      "Utility-based agent"
+    ],
+    "correctIndex": 2,
+    "explanation": "The thermostat reacts to the current reading with a fixed rule and no memory \u2014 a simple reflex agent."
+  },
+  {
+    "id": "toa-024",
+    "topic": "types-of-ai",
+    "difficulty": "hard",
+    "question": "A self-driving car maintains an internal estimate of where a car it can no longer directly see (now hidden behind a truck) is likely to be a few seconds later. This capability is characteristic of:",
+    "choices": [
+      "A simple reflex agent",
+      "A model-based reflex agent",
+      "A goal-based agent with no internal modeling",
+      "Passive sensing alone"
+    ],
+    "correctIndex": 1,
+    "explanation": "Maintaining an internal estimate of unseen aspects of the world is the defining trait of a model-based reflex agent."
+  },
+  {
+    "id": "toa-025",
+    "topic": "types-of-ai",
+    "difficulty": "hard",
+    "question": "Agent 1 only cares whether it reaches its destination. Agent 2 cares about reaching the destination quickly, with minimal fuel use, and avoiding tolls \u2014 weighing tradeoffs among these. Agent 2 is best described as:",
+    "choices": [
+      "Goal-based",
+      "Utility-based",
+      "Simple reflex",
+      "Passive"
+    ],
+    "correctIndex": 1,
+    "explanation": "Weighing tradeoffs among multiple desirable outcomes is characteristic of a utility-based agent."
+  },
+  {
+    "id": "toa-026",
+    "topic": "types-of-ai",
+    "difficulty": "hard",
+    "question": "A wildlife team uses microphones to passively record animal calls, and separately deploys sonar buoys that emit pulses and listen for echoes to map underwater terrain. Which statement is accurate?",
+    "choices": [
+      "Both systems use active sensing",
+      "Both systems use passive sensing",
+      "The microphones use passive sensing; the sonar uses active sensing",
+      "The microphones use active sensing; the sonar uses passive sensing"
+    ],
+    "correctIndex": 2,
+    "explanation": "Microphones only receive signals (passive), while sonar buoys emit pulses and interpret echoes (active)."
+  },
+  {
+    "id": "toa-027",
+    "topic": "types-of-ai",
+    "difficulty": "hard",
+    "question": "A hiring model trained on ten years of past decisions \u2014 most of which favored candidates from a small number of universities due to historic recruiter preference, unrelated to job performance \u2014 starts down-ranking qualified candidates from other schools, despite never being told to consider university prestige. This is best explained by:",
+    "choices": [
+      "The model achieving higher accuracy through feature engineering",
+      "Replication of structural bias present in the historical training data",
+      "A failure of differential privacy",
+      "The model correctly identifying legitimate predictors of performance"
+    ],
+    "correctIndex": 1,
+    "explanation": "The model learned and replicated the structural bias baked into its historical training data."
+  },
+  {
+    "id": "toa-028",
+    "topic": "types-of-ai",
+    "difficulty": "hard",
+    "question": "A city's facial recognition cameras, originally installed only for traffic violations, are later cross-referenced with other databases to track individuals' movements throughout the day. This primarily illustrates a concern about:",
+    "choices": [
+      "Algorithmic transparency",
+      "Expansion of surveillance scope enabled by AI",
+      "Differential privacy guarantees",
+      "Federated learning limitations"
+    ],
+    "correctIndex": 1,
+    "explanation": "This is a case of AI enabling surveillance scope to expand well beyond its original purpose."
+  },
+  {
+    "id": "toa-029",
+    "topic": "types-of-ai",
+    "difficulty": "hard",
+    "question": "A retailer's AI dynamically reorders each shopper's product feed based purely on what keeps them engaged longest, regardless of quality or relevance \u2014 leading sensationalized products to dominate every user's feed over time. This is most directly an example of:",
+    "choices": [
+      "AI improving customer satisfaction uniformly",
+      "Personalization algorithms amplifying certain behaviors and creating feedback loops",
+      "Structured data producing better recommendations",
+      "Federated learning preventing bias"
+    ],
+    "correctIndex": 1,
+    "explanation": "Optimizing purely for engagement can amplify sensational content and create reinforcing feedback loops."
+  },
+  {
+    "id": "toa-030",
+    "topic": "types-of-ai",
+    "difficulty": "hard",
+    "question": "A hospital evaluating an AI diagnostic tool is worried about accountability if it recommends the wrong treatment. Which pair of concerns should it prioritize?",
+    "choices": [
+      "Server uptime and network bandwidth only",
+      "Explainability of predictions and reliability in safety-critical settings",
+      "The visual design of the interface",
+      "The marketing potential of the tool"
+    ],
+    "correctIndex": 1,
+    "explanation": "In safety-critical settings like healthcare, explainability and reliability are the key accountability concerns."
+  }
+]

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Intro to AI — Exam Study Quiz</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="container">
+  <h1>Intro to AI — Exam Study Quiz</h1>
+  <p class="subtitle">Practice questions across data sources, reasoning &amp; knowledge, and types of AI. Pick a topic below or take the full weighted practice test.</p>
+
+  <div class="topic-list">
+    <a class="btn" href="quiz.html?topic=data-sources">Data Sources &amp; Quality</a>
+    <a class="btn" href="quiz.html?topic=reasoning-knowledge">Reasoning &amp; Knowledge</a>
+    <a class="btn" href="quiz.html?topic=types-of-ai">Types of AI / Agents</a>
+    <a class="btn" href="quiz.html?topic=full">Full Practice Test (weighted)</a>
+  </div>
+
+  <h2>Recent Scores</h2>
+  <ul class="attempt-list" id="attempt-list"></ul>
+</div>
+
+<script src="js/storage.js"></script>
+<script>
+  const TOPIC_LABELS = {
+    'data-sources': 'Data Sources & Quality',
+    'reasoning-knowledge': 'Reasoning & Knowledge',
+    'types-of-ai': 'Types of AI / Agents',
+    'full': 'Full Practice Test',
+  };
+
+  function renderAttempts() {
+    const list = document.getElementById('attempt-list');
+    const attempts = getRecentAttempts(10);
+
+    if (attempts.length === 0) {
+      list.innerHTML = '<li class="empty-state">No attempts yet</li>';
+      return;
+    }
+
+    list.innerHTML = attempts.map((a) => {
+      const date = new Date(a.date).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' });
+      const pct = a.total > 0 ? Math.round((a.score / a.total) * 100) : 0;
+      const topicLabel = TOPIC_LABELS[a.topic] || a.topic;
+      return `<li class="attempt-item">
+        <span>${date} — <span class="topic">${topicLabel}</span></span>
+        <span class="score">${a.score}/${a.total} (${pct}%)</span>
+      </li>`;
+    }).join('');
+  }
+
+  renderAttempts();
+</script>
+</body>
+</html>

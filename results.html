@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Results — Intro to AI Study</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="container">
+  <div id="results-area"></div>
+</div>
+
+<script>
+  const attempt = JSON.parse(sessionStorage.getItem('lastAttempt') || 'null');
+  const area = document.getElementById('results-area');
+
+  if (!attempt) {
+    area.innerHTML = '<p>No recent attempt found. <a href="index.html">Back to home</a></p>';
+  } else {
+    const pct = attempt.total > 0 ? Math.round((attempt.score / attempt.total) * 100) : 0;
+    const missed = attempt.missed || [];
+
+    const missedHtml = missed.length === 0
+      ? '<p>No missed questions — great job!</p>'
+      : missed.map((m) => `
+        <div class="missed-question">
+          <p class="question-text">${m.question}</p>
+          <div class="label your-answer">Your answer</div>
+          <div class="your-answer">${m.choices[m.chosenIndex]}</div>
+          <div class="label correct-answer">Correct answer</div>
+          <div class="correct-answer">${m.choices[m.correctIndex]}</div>
+          <div class="label">Explanation</div>
+          <div>${m.explanation}</div>
+        </div>
+      `).join('');
+
+    const missedIds = missed.map((m) => m.id).join(',');
+    const retryBtn = missed.length > 0
+      ? `<a class="btn" href="quiz.html?topic=${attempt.topic}&ids=${encodeURIComponent(missedIds)}">Retry missed questions</a>`
+      : '';
+
+    area.innerHTML = `
+      <div class="score-summary">
+        <div class="score-big">${attempt.score}/${attempt.total} — ${pct}%</div>
+      </div>
+      <h2>Missed Questions</h2>
+      ${missedHtml}
+      <div class="actions">
+        ${retryBtn}
+        <a class="btn secondary" href="index.html">Back to home</a>
+      </div>
+    `;
+  }
+</script>
+</body>
+</html>
