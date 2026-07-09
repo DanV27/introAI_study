@@ -8,7 +8,10 @@
 </head>
 <body>
 <div class="container">
-  <div class="progress" id="progress"></div>
+  <div class="quiz-header">
+    <button class="exit-btn" id="exit-btn" type="button">Exit Quiz</button>
+    <div class="progress" id="progress"></div>
+  </div>
   <div id="quiz-area"></div>
 </div>
 
@@ -27,12 +30,21 @@
   let answered = [];
   let awaitingNext = false;
 
+  const isFullTest = topic === 'full';
+
   const TOPIC_LABELS = {
     'data-sources': 'Data Sources & Quality',
     'reasoning-knowledge': 'Reasoning & Knowledge',
     'types-of-ai': 'Types of AI / Agents',
     'full': 'Full Practice Test',
   };
+
+  document.getElementById('exit-btn').addEventListener('click', () => {
+    const confirmed = confirm('Exit this quiz? Your progress will NOT be saved and this attempt will not appear in your score history.');
+    if (confirmed) {
+      window.location.href = 'index.html';
+    }
+  });
 
   async function init() {
     if (!topic) {
@@ -109,17 +121,23 @@
     document.querySelectorAll('.choice-btn').forEach((btn) => {
       const i = parseInt(btn.dataset.index, 10);
       btn.disabled = true;
-      if (i === q.correctIndex) btn.classList.add('correct');
-      else if (i === chosenIndex) btn.classList.add('incorrect');
+      if (isFullTest) {
+        if (i === chosenIndex) btn.classList.add('selected');
+      } else {
+        if (i === q.correctIndex) btn.classList.add('correct');
+        else if (i === chosenIndex) btn.classList.add('incorrect');
+      }
     });
 
-    const feedback = document.getElementById('feedback');
-    feedback.innerHTML = `
-      <div class="feedback ${isCorrect ? 'correct' : 'incorrect'}">
-        <div class="feedback-label ${isCorrect ? 'correct' : 'incorrect'}">${isCorrect ? 'Correct!' : 'Incorrect'}</div>
-        <div>${q.explanation}</div>
-      </div>
-    `;
+    if (!isFullTest) {
+      const feedback = document.getElementById('feedback');
+      feedback.innerHTML = `
+        <div class="feedback ${isCorrect ? 'correct' : 'incorrect'}">
+          <div class="feedback-label ${isCorrect ? 'correct' : 'incorrect'}">${isCorrect ? 'Correct!' : 'Incorrect'}</div>
+          <div>${q.explanation}</div>
+        </div>
+      `;
+    }
 
     const nextBtn = document.getElementById('next-btn');
     nextBtn.style.display = 'block';

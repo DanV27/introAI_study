@@ -121,10 +121,35 @@ p.subtitle {
   font-style: italic;
 }
 
+.quiz-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
 .progress {
   font-size: 14px;
   color: var(--text-muted);
-  margin-bottom: 8px;
+  margin-bottom: 0;
+}
+
+.exit-btn {
+  flex-shrink: 0;
+  padding: 8px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--text-muted);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.exit-btn:hover {
+  border-color: var(--incorrect);
+  color: var(--incorrect);
 }
 
 .question-card {
@@ -180,6 +205,13 @@ p.subtitle {
   border-color: var(--incorrect);
   background: #fdecec;
   color: var(--incorrect);
+  font-weight: 600;
+}
+
+.choice-btn.selected {
+  border-color: var(--accent);
+  background: #f3ebfb;
+  color: var(--accent);
   font-weight: 600;
 }
 
