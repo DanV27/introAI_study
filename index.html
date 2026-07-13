@@ -37,6 +37,12 @@
     'full': 'full-practice-test',
   };
 
+  function formatDuration(totalSeconds) {
+    const minutes = Math.floor(totalSeconds / 60);
+    const seconds = totalSeconds % 60;
+    return String(minutes).padStart(2, '0') + ':' + String(seconds).padStart(2, '0');
+  }
+
   function renderAttempts() {
     const list = document.getElementById('attempt-list');
     const attempts = getRecentAttempts(10);
@@ -50,9 +56,10 @@
       const date = new Date(a.date).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' });
       const pct = a.total > 0 ? Math.round((a.score / a.total) * 100) : 0;
       const topicLabel = TOPIC_LABELS[a.topic] || a.topic;
+      const timeLabel = typeof a.timeTaken === 'number' ? ` · ${formatDuration(a.timeTaken)}` : '';
       return `<li class="attempt-item">
         <span class="topic">${date} — ${topicLabel}</span>
-        <span class="score">${a.score}/${a.total} (${pct}%)</span>
+        <span class="score">${a.score}/${a.total} (${pct}%)${timeLabel}</span>
       </li>`;
     }).join('');
   }

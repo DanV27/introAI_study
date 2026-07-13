@@ -21,11 +21,20 @@
   const attempt = JSON.parse(sessionStorage.getItem('lastAttempt') || 'null');
   const area = document.getElementById('results-area');
 
+  function formatDuration(totalSeconds) {
+    const minutes = Math.floor(totalSeconds / 60);
+    const seconds = totalSeconds % 60;
+    return String(minutes).padStart(2, '0') + ':' + String(seconds).padStart(2, '0');
+  }
+
   if (!attempt) {
     area.innerHTML = '<p>No recent attempt found. <a href="index.html">Back to home</a></p>';
   } else {
     const pct = attempt.total > 0 ? Math.round((attempt.score / attempt.total) * 100) : 0;
     const missed = attempt.missed || [];
+    const timeLabel = typeof attempt.timeTaken === 'number'
+      ? ` · Time: ${formatDuration(attempt.timeTaken)}`
+      : '';
 
     const missedHtml = missed.length === 0
       ? '<p>No missed questions — great job!</p>'
@@ -48,7 +57,7 @@
 
     area.innerHTML = `
       <div class="score-summary">
-        <div class="score-big">${attempt.score}/${attempt.total} — ${pct}%</div>
+        <div class="score-big">${attempt.score}/${attempt.total} — ${pct}%${timeLabel}</div>
       </div>
       <h2>Missed Questions</h2>
       ${missedHtml}

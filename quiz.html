@@ -15,7 +15,10 @@
 <div class="container">
   <div class="quiz-header">
     <button class="exit-btn" id="exit-btn" type="button">&lt; exit quiz</button>
-    <div class="progress" id="progress"></div>
+    <div class="header-right">
+      <span class="quiz-timer" id="quiz-timer" hidden></span>
+      <div class="progress" id="progress"></div>
+    </div>
   </div>
   <div id="quiz-area"></div>
 </div>
@@ -48,6 +51,37 @@
   const isFullTest = topic === 'full';
   const LETTERS = ['A', 'B', 'C', 'D', 'E', 'F'];
 
+  const timerEl = document.getElementById('quiz-timer');
+  let quizStartTime = null;
+  let timerInterval = null;
+
+  function formatDuration(totalSeconds) {
+    const minutes = Math.floor(totalSeconds / 60);
+    const seconds = totalSeconds % 60;
+    return String(minutes).padStart(2, '0') + ':' + String(seconds).padStart(2, '0');
+  }
+
+  function startTimer() {
+    quizStartTime = Date.now();
+    timerEl.hidden = false;
+    timerEl.textContent = formatDuration(0);
+    timerInterval = setInterval(() => {
+      const elapsed = Math.floor((Date.now() - quizStartTime) / 1000);
+      timerEl.textContent = formatDuration(elapsed);
+    }, 1000);
+  }
+
+  function stopTimer() {
+    if (timerInterval !== null) {
+      clearInterval(timerInterval);
+      timerInterval = null;
+    }
+  }
+
+  function getElapsedSeconds() {
+    return quizStartTime === null ? 0 : Math.floor((Date.now() - quizStartTime) / 1000);
+  }
+
   const TOPIC_LABELS = {
     'data-sources': 'data-sources',
     'reasoning-knowledge': 'reasoning-knowledge',
@@ -66,6 +100,7 @@
   });
 
   document.getElementById('exit-confirm').addEventListener('click', () => {
+    stopTimer();
     window.location.href = 'index.html';
   });
 
@@ -101,6 +136,10 @@
     if (questions.length === 0) {
       quizArea.innerHTML = '<p>No questions found for this selection. <a href="index.html">Back to home</a></p>';
       return;
+    }
+
+    if (isFullTest) {
+      startTimer();
     }
 
     renderQuestion();
@@ -197,6 +236,11 @@
       total,
       missed,
     };
+
+    if (isFullTest) {
+      attempt.timeTaken = getElapsedSeconds();
+      stopTimer();
+    }
 
     saveAttempt(attempt);
     sessionStorage.setItem('lastAttempt', JSON.stringify(attempt));
