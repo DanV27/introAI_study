@@ -292,6 +292,17 @@ p.subtitle {
   color: var(--fail);
 }
 
+.container > .exit-btn {
+  display: inline-block;
+  text-decoration: none;
+  margin-bottom: 20px;
+}
+
+.container > .exit-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
 /* Question card */
 
 .question-card {
