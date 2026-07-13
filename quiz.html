@@ -234,6 +234,15 @@
     const q = questions[currentIndex];
     if (!q) return;
 
+    if (e.key === 'Enter') {
+      const nextBtn = document.getElementById('next-btn');
+      if (nextBtn && nextBtn.style.display !== 'none' && selectedIndex !== null) {
+        e.preventDefault();
+        nextBtn.click();
+      }
+      return;
+    }
+
     const key = e.key.toUpperCase();
     let index = LETTERS.indexOf(key);
     if (index === -1 && e.key >= '1' && e.key <= '9') {
